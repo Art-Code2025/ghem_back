@@ -22,7 +22,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 // إعدادات Multer لرفع الصور
 const storage = multer.diskStorage({
@@ -1959,11 +1959,9 @@ app.post('/api/checkout', async (req, res) => {
 // ======================
 // ORIGINAL APIs (تم الاحتفاظ بها للتوافق مع الداش بورد)
 // ======================
-
-// Start server
 async function startServer() {
   await connectDB();
-  
+
   app.listen(port, () => {
     console.log("🚀 Mawasiem Server with MongoDB is running!");
     console.log(`📍 Server: http://0.0.0.0:${port}`);  // 0.0.0.0 علشان يستمع لكل الواجهات
