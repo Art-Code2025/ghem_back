@@ -1965,12 +1965,12 @@ async function startServer() {
   await connectDB();
   
   app.listen(port, () => {
-    console.log('🚀 Mawasiem Server with MongoDB is running!');
-    console.log(`📍 Server: http://localhost:${port}`);
-    console.log(`🗄️  Database: MongoDB`);
-    console.log(`🔍 Health Check: http://localhost:${port}/api/health`);
-    console.log(`🎯 Frontend: Remember to run 'cd frontend && npm run dev'`);
+    console.log("🚀 Mawasiem Server with MongoDB is running!");
+    console.log(`📍 Server: http://0.0.0.0:${port}`);  // 0.0.0.0 علشان يستمع لكل الواجهات
+    console.log(`🗄️  Database: ${process.env.MONGO_URI ? "MongoDB Atlas" : "Local MongoDB"}`);
+    console.log(`🔍 Health Check: /api/health`);
+    // لو الفرونت مستقل على Replit أو Netlify ما تحتاج تسجّل كوماند cd هنا
   });
-}
+  }
 
-startServer().catch(console.error); 
+  startServer().catch(console.error);
